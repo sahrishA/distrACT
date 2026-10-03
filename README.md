@@ -433,3 +433,25 @@ python app.py
 10. Communicate with teammates when your feature depends on their files or endpoints.
 
 Following this workflow helps everyone work independently while keeping the Distract! project organized and reducing accidental overwrites and merge conflicts.
+## App Structure
+distract/
+├── app.py
+├── auth.py
+├── activity.py
+├── google_calendar.py
+├── overlap.py
+├── models.py
+├── config.py
+├── requirements.txt
+├── .env                  # Never commit
+├── .gitignore
+├── templates/
+│   ├── base.html
+│   ├── home.html
+│   ├── login.html
+│   ├── signup.html
+│   ├── dashboard.html
+│   └── add_activity.html
+└── static/
+    ├── css/style.css
+    └── js/dashboard.js
