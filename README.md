@@ -433,7 +433,10 @@ python app.py
 10. Communicate with teammates when your feature depends on their files or endpoints.
 
 Following this workflow helps everyone work independently while keeping the Distract! project organized and reducing accidental overwrites and merge conflicts.
-## App Structure
+
+## Project Structure
+
+```text
 distract/
 ├── app.py
 ├── auth.py
@@ -453,5 +456,8 @@ distract/
 │   ├── dashboard.html
 │   └── add_activity.html
 └── static/
-    ├── css/style.css
-    └── js/dashboard.js
+    ├── css/
+    │   └── style.css
+    └── js/
+        └── dashboard.js
+```
