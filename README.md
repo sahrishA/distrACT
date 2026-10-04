@@ -1,5 +1,5 @@
 # distrACT
-Students often get distracted by social media notifications or feel overwhelmed when balancing back-to-back workshops and school assignments
+Students often get distracted by social media notifications or feel overwhelmed when balancing back-to-back workshops and school assignments 
 # Git & GitHub Workflow for Distract!
 
 This guide explains how every team member should set up the repository, work on their assigned features, and submit code without overwriting someone else's work.
