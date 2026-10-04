@@ -25,6 +25,12 @@
 
    <h1 class="mb-4">distrACTIVE Dashboard</h1>
 
+   {% with messages = get_flashed_messages(with_categories=true) %}
+       {% for category, message in messages %}
+           <div class="alert alert-{{ 'danger' if category == 'error' else category }}">{{ message }}</div>
+       {% endfor %}
+   {% endwith %}
+
    <div class="row g-4">
 
        <!-- Widget 1: Activity -->
@@ -45,7 +51,28 @@
            <div class="card shadow-sm h-100">
                <div class="card-body">
                    <h3 class="card-title">Calendar</h3>
-                   <p class="text-muted">View your upcoming events.</p>
+
+                   {% if not calendar_connected %}
+                       <p class="text-muted">Connect your Google Calendar to see upcoming events.</p>
+                       <a href="{{ url_for('calendar_connect') }}" class="btn btn-primary">Connect Google Calendar</a>
+                   {% elif calendar_events %}
+                       <ul class="list-group list-group-flush">
+                           {% for event in calendar_events %}
+                               <li class="list-group-item px-0">
+                                   <strong>{{ event.title }}</strong><br>
+                                   <small class="text-muted">
+                                       {% if event.all_day %}
+                                           {{ event.start }} (all day)
+                                       {% else %}
+                                           {{ event.start[:10] }} {{ event.start[11:16] }} – {{ event.end[11:16] }}
+                                       {% endif %}
+                                   </small>
+                               </li>
+                           {% endfor %}
+                       </ul>
+                   {% else %}
+                       <p class="text-muted">No events in the next 14 days.</p>
+                   {% endif %}
                </div>
            </div>
        </div>

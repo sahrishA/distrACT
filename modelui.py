@@ -26,6 +26,9 @@ class User(UserMixin, db.Model):
         nullable=False
     )
 
+    # Google OAuth credentials, stored as JSON
+    google_credentials = db.Column(db.Text, nullable=True)
+
     created_at = db.Column(
         db.DateTime,
         server_default=db.func.now()

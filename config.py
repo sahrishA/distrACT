@@ -27,6 +27,13 @@ class Config:
         "http://127.0.0.1:5000/oauth2callback",
     )
 
+    # Allow OAuth over plain http for local development only.
+    if GOOGLE_REDIRECT_URI.startswith(("http://127.0.0.1", "http://localhost")):
+        os.environ.setdefault("OAUTHLIB_INSECURE_TRANSPORT", "1")
+
+    # Google may return previously granted scopes too; don't treat that as an error.
+    os.environ.setdefault("OAUTHLIB_RELAX_TOKEN_SCOPE", "1")
+
     # Read-only access to the user's calendar events.
     GOOGLE_SCOPES = [
         "https://www.googleapis.com/auth/calendar.events.readonly"
