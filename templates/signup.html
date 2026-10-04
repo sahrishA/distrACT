@@ -1,0 +1,36 @@
+
+<form method="post">
+
+    <!-- Email box -->
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required
+            pattern="[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}">
+        <div class="invalid-feedback">Please enter a valid email, like name@example.com.</div>
+    </div>
+
+    <!-- Password box -->
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" minlength="8" required>
+        <div class="form-text">At least 8 characters.</div>
+        <div class="invalid-feedback">Password must be at least 8 characters.</div>
+    </div>
+
+    <!-- Sign up button -->
+    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+</form>
+
+<form method="post" class="needs-validation" novalidate></form>
+
+<!-- Google sign up -->
+<div class="text-center my-3">or</div>
+<a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID.apps.googleusercontent.com&redirect_uri=http://localhost:5000/auth/google/callback&response_type=code&scope=openid%20email%20profile" class="btn btn-outline-secondary w-100">Sign up with Google</a>
+
+<p class="text-center mt-3">
+    Already have an account? <a href="login.html">Log in</a>
+</p>
+
+</body>
+</html>
+
