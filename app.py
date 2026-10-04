@@ -15,7 +15,7 @@ app.register_blueprint(auth)
 def home():
     if current_user.is_authenticated:
         return redirect(url_for("dashboard"))
-    return render_template("home.html")
+    return redirect(url_for("auth.login"))
 
 @app.route("/dashboard")
 @login_required
