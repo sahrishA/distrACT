@@ -27,6 +27,7 @@ def create_tables():
         ActivityID INTEGER PRIMARY KEY AUTOINCREMENT,
         StudentID INTEGER NOT NULL,
         Title TEXT NOT NULL,
+        Description TEXT,
         Date TEXT NOT NULL,
         StartTime TEXT NOT NULL,
         EndTime TEXT NOT NULL,
@@ -34,6 +35,14 @@ def create_tables():
             REFERENCES Students(StudentID)
     )
     """)
+
+    # Add Description to Activities tables created before it existed
+    columns = [
+        row["name"]
+        for row in cursor.execute("PRAGMA table_info(Activities)")
+    ]
+    if "Description" not in columns:
+        cursor.execute("ALTER TABLE Activities ADD COLUMN Description TEXT")
 
     connection.commit()
     connection.close()

@@ -3,6 +3,7 @@ import os
 from datetime import datetime, timedelta, timezone
 
 from flask import current_app
+from google.auth import jwt
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
@@ -95,6 +96,20 @@ def fetch_calendar_events(credentials, days_ahead=14):
             break
 
     return events
+
+
+def google_account_email(credentials):
+    """Return the email of the Google account that granted the credentials."""
+    if not credentials.id_token:
+        return None
+
+    # The ID token came straight from Google's token endpoint over HTTPS,
+    # so its contents can be read without re-verifying the signature.
+    claims = jwt.decode(credentials.id_token, verify=False)
+
+    if not claims.get("email_verified"):
+        return None
+    return claims.get("email", "").strip().lower()
 
 
 def credentials_from_dict(data):

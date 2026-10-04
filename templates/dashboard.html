@@ -38,10 +38,26 @@
            <div class="card shadow-sm h-100">
                <div class="card-body">
                    <h3 class="card-title">Activity</h3>
-                   <p class="text-muted">Your tasks will appear here.</p>
+                   {% if activities %}
+                       <ul class="list-group list-group-flush mb-3">
+                           {% for activity in activities %}
+                               <li class="list-group-item px-0">
+                                   <strong>{{ activity.Title }}</strong><br>
+                                   <small class="text-muted">
+                                       {{ activity.Date }} {{ activity.StartTime }} – {{ activity.EndTime }}
+                                   </small>
+                                   {% if activity.Description %}
+                                       <div class="small">{{ activity.Description }}</div>
+                                   {% endif %}
+                               </li>
+                           {% endfor %}
+                       </ul>
+                   {% else %}
+                       <p class="text-muted">Your tasks will appear here.</p>
+                   {% endif %}
 
                    <!-- Add Task -->
-                   <button class="btn btn-primary">+ Add Task</button>
+                   <a href="{{ url_for('add_activity') }}" class="btn btn-primary">+ Add Task</a>
                </div>
            </div>
        </div>
@@ -102,7 +118,7 @@
                    <p class="text-muted">Manage your account and preferences.</p>
 
                    <div class="d-flex gap-2">
-                       <a href="#" class="btn btn-outline-secondary">Settings</a>
+                       <a href="{{ url_for('settings') }}" class="btn btn-outline-secondary">Settings</a>
                        <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger">Log out</a>
                    </div>
                </div>

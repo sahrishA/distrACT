@@ -34,7 +34,10 @@ class Config:
     # Google may return previously granted scopes too; don't treat that as an error.
     os.environ.setdefault("OAUTHLIB_RELAX_TOKEN_SCOPE", "1")
 
-    # Read-only access to the user's calendar events.
+    # Read-only access to the user's calendar events, plus the Google
+    # account's email so we can check it matches the logged-in user.
     GOOGLE_SCOPES = [
-        "https://www.googleapis.com/auth/calendar.events.readonly"
+        "openid",
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/calendar.events.readonly",
     ]
