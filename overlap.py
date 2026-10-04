@@ -27,7 +27,9 @@ def check_overlap(
         "%Y-%m-%d %H:%M"
     )
 
-    return (
+    return (edentials.
+    
+    
         activity_start < event_end
         and event_start < activity_end
     )
