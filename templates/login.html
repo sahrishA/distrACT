@@ -38,24 +38,17 @@
         text-align: center;
         margin-top: 15px;
     }
-    .login .hint {
-        color: #aaa;
-        font-size: 0.85rem;
-        margin-top: 5px;
-    }
 </style>
 
 <div class="login">
-    <h1>Sign up</h1>
+    <h1>Log in</h1>
 
     <form method="post">
-        <input name="username" id="username" placeholder="Username" required>
-        <input type="email" name="email" id="email" placeholder="Email" required>
-        <input type="password" name="password" id="password" placeholder="Password" minlength="8" required>
-        <div class="hint">At least 8 characters.</div>
-        <button type="submit">Sign Up</button>
+        <input name="login" id="login" placeholder="Username or email" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
     </form>
 
-    <p>Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+    <p>Don't have an account? <a href="{{ url_for('auth.signup') }}">Sign up</a></p>
 </div>
 {% endblock %}
