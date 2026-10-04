@@ -1,1 +1,25 @@
 
+
+# Python virtual environment
+.venv/
+venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Environment variables and secrets
+.env
+credentials.json
+client_secret*.json
+token.json
+
+# Google Calendar tokens
+instance/google_tokens/
+
+# Local database
+instance/*.db
+*.db
+
+# VS Code settings (optional)
+.vscode/
