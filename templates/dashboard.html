@@ -75,7 +75,7 @@
                    <p class="text-muted">Manage your account and preferences.</p>
 
                    <div class="d-flex gap-2">
-                       <a href="#" class="btn btn-outline-secondary">Settings</a>
+                       <a href="{{ url_for('settings') }}" class="btn btn-outline-secondary">Settings</a>
                        <a href="{{ url_for('auth.logout') }}" class="btn btn-outline-danger">Log out</a>
                    </div>
                </div>

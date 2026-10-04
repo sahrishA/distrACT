@@ -7,7 +7,7 @@ from flask_login import (
 )
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from models import db, User
+from modelui import db, User
 
 auth = Blueprint("auth", __name__)
 

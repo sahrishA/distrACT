@@ -1,7 +1,6 @@
-
 from flask import Flask, render_template, redirect, url_for
 from flask_login import current_user, login_required
-from models import db
+from modelui import db
 from auth import auth, login_manager
 
 app = Flask(__name__)
@@ -22,6 +21,11 @@ def home():
 @login_required
 def dashboard():
     return render_template("dashboard.html")
+
+@app.route("/settings")
+@login_required
+def settings():
+    return render_template("settings.html")
 
 if __name__ == "__main__":
     with app.app_context():
