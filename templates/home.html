@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="text-center py-5">
+
+    <h1 class="display-1 fw-bold mt-5">distrACT</h1>
+
+    <p class="lead text-secondary mt-3">
+        Stay focused. Stay organized. Get things done.
+    </p>
+
+    <div class="mt-4">
+        <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-lg me-2">
+            Login
+        </a>
+        <a href="{{ url_for('auth.signup') }}" class="btn btn-outline-primary btn-lg">
+            Sign Up
+        </a>
+    </div>
+
+</div>
+{% endblock %}

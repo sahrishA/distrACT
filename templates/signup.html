@@ -1,36 +1,61 @@
+{% extends "base.html" %}
 
-<form method="post">
+{% block content %}
+<style>
+    .login {
+        max-width: 400px;
+        margin: 80px auto;
+        padding: 35px;
+        background: black;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,.15);
+    }
+    .login h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: white;
+    }
+    .login input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
+    }
+    .login button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 20px;
+        background: #0d6efd;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .login p, .login a {
+        color: white;
+        text-align: center;
+        margin-top: 15px;
+    }
+    .login .hint {
+        color: #aaa;
+        font-size: 0.85rem;
+        margin-top: 5px;
+    }
+</style>
 
-    <!-- Email box -->
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" name="email" required
-            pattern="[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}">
-        <div class="invalid-feedback">Please enter a valid email, like name@example.com.</div>
-    </div>
+<div class="login">
+    <h1>Sign up</h1>
 
-    <!-- Password box -->
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" minlength="8" required>
-        <div class="form-text">At least 8 characters.</div>
-        <div class="invalid-feedback">Password must be at least 8 characters.</div>
-    </div>
+    <form method="post">
+        <input name="username" id="username" placeholder="Username" required>
+        <input type="email" name="email" id="email" placeholder="Email" required>
+        <input type="password" name="password" id="password" placeholder="Password" minlength="8" required>
+        <div class="hint">At least 8 characters.</div>
+        <button type="submit">Sign Up</button>
+    </form>
 
-    <!-- Sign up button -->
-    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-</form>
-
-<form method="post" class="needs-validation" novalidate></form>
-
-<!-- Google sign up -->
-<div class="text-center my-3">or</div>
-<a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID.apps.googleusercontent.com&redirect_uri=http://localhost:5000/auth/google/callback&response_type=code&scope=openid%20email%20profile" class="btn btn-outline-secondary w-100">Sign up with Google</a>
-
-<p class="text-center mt-3">
-    Already have an account? <a href="login.html">Log in</a>
-</p>
-
-</body>
-</html>
-
+    <p>Already have an account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+</div>
+{% endblock %}
